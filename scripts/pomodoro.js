@@ -47,6 +47,7 @@ const toggleState = function() {
 	} else if (state === 'work') {
 		if (iteration > 3) {
 			setRestTime(defaultBigRestTime);
+			iteration = 0;
 		} else {
 			setRestTime();
 		}
