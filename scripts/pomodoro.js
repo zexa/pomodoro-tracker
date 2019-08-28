@@ -49,4 +49,4 @@ const toggleState = function() {
 	}
 }
 
-setWorkTime();
+toggleState();
