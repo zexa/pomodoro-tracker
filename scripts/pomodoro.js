@@ -41,12 +41,18 @@ const setRestTime = function(time = defaultRestTime) {
 	setTimeout(toggleState, time);
 }
 
+const setBigRestTime = function(time = defaultBigRestTime) {
+	state = 'big rest';
+	blinkBackground('#3ca661');
+	setTimeout(toggleState, time);
+}
+
 const toggleState = function() {
-	if (state === 'rest') {
+	if ((state === 'rest') || (state === 'big rest')) {
 		setWorkTime();
 	} else if (state === 'work') {
 		if (iteration > 3) {
-			setRestTime(defaultBigRestTime);
+			setBigRestTime();
 			iteration = 0;
 		} else {
 			setRestTime();
