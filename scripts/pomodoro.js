@@ -2,6 +2,10 @@ const second = 1000;
 const minute = second * 60;
 const hour = minute * 60;
 
+const defaultWorkTime = minute * 25;
+const defaultRestTime = minute * 5;
+const defaultBigRestTime = minute * 30;
+
 let iteration = 0;
 let state = 'rest';
 
@@ -24,13 +28,13 @@ const blinkBackground = function(color, times = 3) {
 	blink();
 }
 
-const setWorkTime = function(time = minute * 25) {
+const setWorkTime = function(time = defaultWorkTime) {
 	state = 'work';
 	blinkBackground('#a63c6b');
 	setTimeout(toggleState, time);
 }
 
-const setRestTime = function(time = minute * 5) {
+const setRestTime = function(time = defaultRestTime) {
 	state = 'rest';
 	blinkBackground('#3c76a6');
 	iteration++;
@@ -42,7 +46,7 @@ const toggleState = function() {
 		setWorkTime();
 	} else if (state === 'work') {
 		if (iteration > 3) {
-			setRestTime(minute * 30);
+			setRestTime(defaultBigRestTime);
 		} else {
 			setRestTime();
 		}
